@@ -6,5 +6,8 @@ public class Main {
         System.out.println(seg1.distance());
 
         System.out.println(seg1.toSvg());
+
+        Polygon pol1 = new Polygon(new Point[]{a, b});
+        System.out.println(pol1.toSvg());
     }
 }
