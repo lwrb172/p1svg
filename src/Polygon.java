@@ -1,10 +1,15 @@
-import java.util.Locale;
-
 public class Polygon {
     private Point[] points;
 
     public Polygon(Point[] points) {
         this.points = points;
+    }
+
+    public Polygon(Polygon src) {
+        this.points = new Point[src.points.length];
+        for (int i = 0; i < src.points.length; ++i) {
+            this.points[i] = new Point(src.points[i].x, src.points[i].y);
+        }
     }
 
     public String toSvg() {
