@@ -4,5 +4,7 @@ public class Main {
         Point b = new Point(3, 1);
         Segment seg1 = new Segment(a, b);
         System.out.println(seg1.distance());
+
+        System.out.println(seg1.toSvg());
     }
 }
