@@ -2,6 +2,7 @@ import java.util.Locale;
 
 public class Segment {
     private Point start, end;
+    private Style style;
 
     public Point getStart() {
         return start;
@@ -14,6 +15,7 @@ public class Segment {
     public Segment(Point start, Point end) {
         this.start = start;
         this.end = end;
+        this.style = new Style();
     }
 
     public double distance() {
@@ -21,8 +23,9 @@ public class Segment {
     }
 
     public String toSvg() {
-        return String.format(Locale.ENGLISH, "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:red;stroke-width:2\" />",
+        String svg =  String.format(Locale.ENGLISH, "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" ",
                 start.x, start.y, end.x, end.y);
+        return svg + style.toSvg();
     }
 
     public static Segment[] perpendicularSegments(Segment segment, Point point) {
