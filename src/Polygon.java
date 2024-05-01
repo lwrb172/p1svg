@@ -1,17 +1,16 @@
-public class Polygon {
+public class Polygon extends Shape {
     private Point[] points;
-    private Style style;
 
     public Polygon(Point[] points) {
         this.points = points;
-        this.style = new Style();
     }
 
     public Polygon(Point[] points, Style style) {
+        super(style);
         this.points = points;
-        this.style = style;
     }
 
+    @Override
     public String toSvg() {
         StringBuilder sb = new StringBuilder();
         sb.append("<polygon points=\"");
