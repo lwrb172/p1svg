@@ -20,16 +20,4 @@ public class Style {
         return String.format(Locale.ENGLISH, "style=\"fill:%s;stroke:%s;stroke-width:%f\" />",
                 fillColor, strokeColor, strokeWidth);
     }
-
-    public String getFillColor() {
-        return fillColor;
-    }
-
-    public String getStrokeColor() {
-        return strokeColor;
-    }
-
-    public Double getStrokeWidth() {
-        return strokeWidth;
-    }
 }

@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         //lab1
-        Point a = new Point(0, 100);
-        Point b = new Point(300, 100);
+        Point a = new Point(50, 50);
+        Point b = new Point(100, 50);
         Segment seg1 = new Segment(a, b);
         System.out.println(seg1.distance());
 
@@ -11,13 +11,13 @@ public class Main {
         Polygon pol1 = new Polygon(new Point[]{a, b});
         System.out.println(pol1.toSvg());
         //lab2
-        Style style = new Style("black", "red", 5.0);
+        Style style1 = new Style("black", "red", 5.0);
         Polygon star = new Polygon(
                 new Point[]{
                         new Point(100, 10), new Point(40, 198),
                         new Point(190, 78), new Point(10, 78),
                         new Point(160, 198)}
-                , style
+                , style1
         );
         Polygon sixSides = new Polygon(
                 new Point[]{
@@ -36,6 +36,8 @@ public class Main {
         scene.addPolygon(star);
         scene.addPolygon(sixSides);
         scene.addPolygon(threeSides);
+        Style style2 = new Style("cyan", "pink", 6.0);
+        scene.addPolygon(Polygon.square(seg1, style2));
         scene.save("out.html");
     }
 }

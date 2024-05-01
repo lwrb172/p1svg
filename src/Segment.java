@@ -29,10 +29,21 @@ public class Segment {
     }
 
     public static Segment[] perpendicularSegments(Segment segment, Point point) {
-        double distanceX = segment.end.x - segment.start.x;
-        double distanceY = segment.end.y - segment.start.y;
+        double dx = segment.end.x - segment.start.x;
+        double dy = segment.end.y - segment.start.y;
         return new Segment[]{
-                new Segment(point, new Point(point.x - distanceY, point.y + distanceX)),
-                new Segment(point, new Point(point.x + distanceY, point.y - distanceY))};
+                new Segment(point, new Point(point.x - dy, point.y + dx)),
+                new Segment(point, new Point(point.x + dy, point.y - dx))
+        };
+    }
+
+    public static Segment[] perpendicularSegments(Segment segment, Point point, double length) {
+        double dx = ((segment.getEnd().getX() - segment.getStart().getX()) / segment.distance()) * length;
+        double dy = ((segment.getEnd().getY() - segment.getStart().getY()) / segment.distance()) * length;
+
+        return new Segment[]{
+                new Segment(point, new Point(point.getX() - dy, point.getY() + dx)),
+                new Segment(point, new Point(point.getX() + dy, point.getY() - dx))
+        };
     }
 }
