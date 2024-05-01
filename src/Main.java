@@ -47,18 +47,28 @@ public class Main {
 //        scene.adShape(ellipse1);
 //        scene.adShape(ellipse2);
 //        scene.save("out.html");
-        //lab3 z2
+        //lab3
         Shape star = new Polygon(
                 new Vec2[]{
                         new Vec2(100, 10), new Vec2(40, 198),
                         new Vec2(190, 78), new Vec2(10, 78),
                         new Vec2(160, 198)
                 });
-        Ellipse ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
-        SolidFillShapeDecorator decEllipse = new SolidFillShapeDecorator(ellipse, "yellow");
-        SolidFillShapeDecorator decStar = new SolidFillShapeDecorator(star, "pink");
-        scene.adShape(new StrokeShapeDecorator(decStar, "purple", 6.0));
-        scene.adShape(new StrokeShapeDecorator(decEllipse, "orange", 3.0));
+        star = new SolidFillShapeDecorator(star, "pink");
+        star = new TransformationDecorator.Builder()
+                .translate(new Vec2(50, 50))
+                .rotate(-27, new Vec2(0, 0))
+                .scale(new Vec2(0.85, 0.85))
+                .build(star);
+
+        Shape ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
+        ellipse = new SolidFillShapeDecorator(ellipse, "yellow");
+        ellipse = new TransformationDecorator.Builder()
+                .rotate(60, new Vec2(100, 220))
+                .build(ellipse);
+
+        scene.adShape(new StrokeShapeDecorator(star, "purple", 6.0));
+        scene.adShape(new StrokeShapeDecorator(ellipse, "orange", 3.0));
         scene.save("out.html");
     }
 }
