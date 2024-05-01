@@ -33,11 +33,20 @@ public class Main {
                 }
         );
         SvgScene scene = new SvgScene();
-        scene.addPolygon(star);
-        scene.addPolygon(sixSides);
-        scene.addPolygon(threeSides);
+        scene.adShape(star);
+        scene.adShape(sixSides);
+        scene.adShape(threeSides);
         Style style2 = new Style("cyan", "pink", 6.0);
-        scene.addPolygon(Polygon.square(seg1, style2));
+        scene.adShape(Polygon.square(seg1, style2));
+//        scene.save("out.html");
+        //lab3
+        Style style3 = new Style("lime", "violet", 5.0);
+        Style style4 = new Style("black", "blue", 5.0);
+        Ellipse ellipse1 = new Ellipse(style3, new Point(155, 50), 30, 15);
+        Ellipse ellipse2 = new Ellipse(style4, new Point (100, 220), 60, 30);
+        System.out.println(ellipse1.toSvg());
+        scene.adShape(ellipse1);
+        scene.adShape(ellipse2);
         scene.save("out.html");
     }
 }

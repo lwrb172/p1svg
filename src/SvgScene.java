@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class SvgScene {
-    private final List<Polygon> polygons = new ArrayList<>();
+    private final List<Shape> shapes = new ArrayList<>();
 
-    public void addPolygon(Polygon polygon) {
-        polygons.add(polygon);
+    public void adShape(Shape shape) {
+        shapes.add(shape);
     }
 
     public void save(String path) {
@@ -22,8 +22,8 @@ public class SvgScene {
                             1000.0, 1000.0)
             );
 
-            for (Polygon polygon : polygons) {
-                fileWriter.write("\t" + polygon.toSvg() + "\n");
+            for (Shape shape : shapes) {
+                fileWriter.write("\t" + shape.toSvg() + "\n");
             }
 
             fileWriter.write("</svg>");
