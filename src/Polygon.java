@@ -13,13 +13,13 @@ public class Polygon implements Shape {
     }
 
     @Override
-    public String toSvg() {
+    public String toSvg(String parameters) {
         StringBuilder sb = new StringBuilder();
         sb.append("<polygon points=\"");
         for(Vec2 vec2 : vec2s) {
             sb.append(vec2.x).append(",").append(vec2.y).append(" ");
         }
-        sb.append("\" ").append(style.toSvg());
+        sb.append("\" ").append(parameters).append(" />");
         return sb.toString();
     }
 

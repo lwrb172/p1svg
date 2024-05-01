@@ -23,7 +23,7 @@ public class SvgScene {
             );
 
             for (Shape shape : shapes) {
-                fileWriter.write("\t" + shape.toSvg() + "\n");
+                fileWriter.write("\t" + shape.toSvg("") + "\n");
             }
 
             fileWriter.write("</svg>");

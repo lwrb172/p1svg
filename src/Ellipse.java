@@ -18,9 +18,9 @@ public class Ellipse implements Shape {
     }
 
     @Override
-    public String toSvg() {
+    public String toSvg(String parameters) {
         return "<ellipse rx=\"" + radiusX + "\" ry=\"" + radiusY +
                 "\" cx=\"" + center.getX() + "\" cy=\"" + center.getY() + "\" " +
-                style.toSvg();
+                parameters + " />";
     }
 }
