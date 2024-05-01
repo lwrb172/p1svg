@@ -1,18 +1,18 @@
 import java.util.Locale;
 
 public class Segment {
-    private Point start, end;
+    private Vec2 start, end;
     private Style style;
 
-    public Point getStart() {
+    public Vec2 getStart() {
         return start;
     }
 
-    public Point getEnd() {
+    public Vec2 getEnd() {
         return end;
     }
 
-    public Segment(Point start, Point end) {
+    public Segment(Vec2 start, Vec2 end) {
         this.start = start;
         this.end = end;
         this.style = new Style();
@@ -28,22 +28,22 @@ public class Segment {
         return svg + style.toSvg();
     }
 
-    public static Segment[] perpendicularSegments(Segment segment, Point point) {
+    public static Segment[] perpendicularSegments(Segment segment, Vec2 vec2) {
         double dx = segment.end.x - segment.start.x;
         double dy = segment.end.y - segment.start.y;
         return new Segment[]{
-                new Segment(point, new Point(point.x - dy, point.y + dx)),
-                new Segment(point, new Point(point.x + dy, point.y - dx))
+                new Segment(vec2, new Vec2(vec2.x - dy, vec2.y + dx)),
+                new Segment(vec2, new Vec2(vec2.x + dy, vec2.y - dx))
         };
     }
 
-    public static Segment[] perpendicularSegments(Segment segment, Point point, double length) {
+    public static Segment[] perpendicularSegments(Segment segment, Vec2 vec2, double length) {
         double dx = ((segment.getEnd().getX() - segment.getStart().getX()) / segment.distance()) * length;
         double dy = ((segment.getEnd().getY() - segment.getStart().getY()) / segment.distance()) * length;
 
         return new Segment[]{
-                new Segment(point, new Point(point.getX() - dy, point.getY() + dx)),
-                new Segment(point, new Point(point.getX() + dy, point.getY() - dx))
+                new Segment(vec2, new Vec2(vec2.getX() - dy, vec2.getY() + dx)),
+                new Segment(vec2, new Vec2(vec2.getX() + dy, vec2.getY() - dx))
         };
     }
 }
