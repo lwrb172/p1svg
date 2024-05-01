@@ -55,8 +55,10 @@ public class Main {
                         new Vec2(160, 198)
                 });
         Ellipse ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
-        scene.adShape(new SolidFillShapeDecorator(star, "pink"));
-        scene.adShape(new SolidFillShapeDecorator(ellipse, "yellow"));
+        SolidFillShapeDecorator decEllipse = new SolidFillShapeDecorator(ellipse, "yellow");
+        SolidFillShapeDecorator decStar = new SolidFillShapeDecorator(star, "pink");
+        scene.adShape(new StrokeShapeDecorator(decStar, "purple", 6.0));
+        scene.adShape(new StrokeShapeDecorator(decEllipse, "orange", 3.0));
         scene.save("out.html");
     }
 }
