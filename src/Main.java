@@ -47,12 +47,16 @@ public class Main {
 //        scene.adShape(ellipse1);
 //        scene.adShape(ellipse2);
 //        scene.save("out.html");
-        //lab3
-        SolidFilledPolygon pol1 = new SolidFilledPolygon(
+        //lab3 z2
+        Shape star = new Polygon(
                 new Vec2[]{
-                        new Vec2(50, 5), new Vec2(75, 95),
-                        new Vec2(35, 95)}, "blue");
-        scene.adShape(pol1);
+                        new Vec2(100, 10), new Vec2(40, 198),
+                        new Vec2(190, 78), new Vec2(10, 78),
+                        new Vec2(160, 198)
+                });
+        Ellipse ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
+        scene.adShape(new SolidFillShapeDecorator(star, "pink"));
+        scene.adShape(new SolidFillShapeDecorator(ellipse, "yellow"));
         scene.save("out.html");
     }
 }

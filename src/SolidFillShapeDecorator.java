@@ -1,8 +1,8 @@
-public class SolidFilledPolygon extends Polygon {
+public class SolidFillShapeDecorator extends ShapeDecorator {
     private String color;
 
-    public SolidFilledPolygon(Vec2[] vec2s, String color) {
-        super(vec2s);
+    public SolidFillShapeDecorator(Shape decoratedShape, String color) {
+        super(decoratedShape);
         this.color = color;
     }
 
