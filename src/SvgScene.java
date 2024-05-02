@@ -7,6 +7,15 @@ import java.util.Locale;
 public class SvgScene {
     private final List<Shape> shapes = new ArrayList<>();
 
+    private static SvgScene instance = null;
+
+    public static SvgScene getInstance() {
+        if(instance == null) {
+            instance = new SvgScene();
+        }
+        return instance;
+    }
+
     public void adShape(Shape shape) {
         shapes.add(shape);
     }
