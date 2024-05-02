@@ -1,5 +1,4 @@
 public class DropShadowDecorator extends ShapeDecorator{
-
     private int index;
     public DropShadowDecorator(Shape decoratedShape) {
         super(decoratedShape);

@@ -3,12 +3,8 @@ import java.util.Locale;
 
 public class GradientFillShapeDecorator extends ShapeDecorator {
     private static int index = 1;
-    private record Stop(double offset, String color) {};
+    private record Stop(double offset, String color) {}
     private Stop stops[];
-
-    public GradientFillShapeDecorator(Shape decoratedShape) {
-        super(decoratedShape);
-    }
 
     public static class Builder {
         private Stop stops[] = new Stop[0];
@@ -32,13 +28,18 @@ public class GradientFillShapeDecorator extends ShapeDecorator {
         }
     }
 
+    private GradientFillShapeDecorator(Shape decoratedShape) {
+        super(decoratedShape);
+    }
+
     private int addDefs() {
-        SvgScene svgScene = SvgScene.getInstance();
-        String result =  "\t<linearGradient id=\"g%d\" >\n";
+        SvgScene scene = SvgScene.getInstance();
+        String result = "\t<linearGradient id=\"g%d\" >\n";
         for(var stop : stops)
-            result += String.format(Locale.ENGLISH, "\t\t<stop offset=\"%f\" style=\"stop-color:%S\" />\n", stop.offset, stop.color);
+            result += String.format(Locale.ENGLISH, "\t\t<stop offset=\"%f\" style=\"stop-color:%s\" />\n", stop.offset, stop.color);
         result += "\t</linearGradient>";
-        svgScene.addFilter(result);
+        scene.addFilter(result);
+//        System.out.println(result);
         return index++;
     }
 

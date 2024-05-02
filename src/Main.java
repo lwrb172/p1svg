@@ -33,19 +33,19 @@ public class Main {
 //                }
 //        );
 //        SvgScene scene = new SvgScene();
-//        scene.adShape(star);
-//        scene.adShape(sixSides);
-//        scene.adShape(threeSides);
+//        scene.addShape(star);
+//        scene.addShape(sixSides);
+//        scene.addShape(threeSides);
 //        Style style2 = new Style("cyan", "pink", 6.0);
-//        scene.adShape(Polygon.square(seg1, style2));
+//        scene.addShape(Polygon.square(seg1, style2));
 ////        scene.save("out.html");
 //        Style style3 = new Style("lime", "violet", 5.0);
 //        Style style4 = new Style("black", "blue", 5.0);
 //        Ellipse ellipse1 = new Ellipse(style3, new Vec2(155, 50), 30, 15);
 //        Ellipse ellipse2 = new Ellipse(style4, new Vec2(100, 220), 60, 30);
 //        System.out.println(ellipse1.toSvg());
-//        scene.adShape(ellipse1);
-//        scene.adShape(ellipse2);
+//        scene.addShape(ellipse1);
+//        scene.addShape(ellipse2);
 //        scene.save("out.html");
         //lab3
         Shape star = new Polygon(
@@ -54,30 +54,27 @@ public class Main {
                         new Vec2(190, 78), new Vec2(10, 78),
                         new Vec2(160, 198)
                 });
-//        star = new SolidFillShapeDecorator(star, "pink");
+        Shape ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
+
+        star = new SolidFillShapeDecorator(star, "pink");
+        star = new DropShadowDecorator(star);
+//        star = new GradientFillShapeDecorator.Builder()
+//                .setShape(star).addStop(0, "pink").addStop(0.5, "purple").addStop(1, "green").build();
         star = new TransformationDecorator.Builder()
                 .translate(new Vec2(50, 50))
                 .rotate(-27, new Vec2(0, 0))
                 .scale(new Vec2(0.85, 0.85))
                 .build(star);
 
-        Shape ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
         ellipse = new SolidFillShapeDecorator(ellipse, "yellow");
+        ellipse = new DropShadowDecorator(ellipse);
         ellipse = new TransformationDecorator.Builder()
-                .rotate(60, new Vec2(100, 220))
+                .rotate(10, new Vec2(100, 220))
                 .build(ellipse);
 
-//        ellipse = new DropShadowDecorator(ellipse);
-//        star = new DropShadowDecorator(star);
-        star = new GradientFillShapeDecorator.Builder()
-                .setShape(star).addStop(0, "blue")
-                .addStop(0.3, "black")
-                .addStop(1, "green")
-                .build();
-
         SvgScene scene = SvgScene.getInstance();
-        scene.adShape(new StrokeShapeDecorator(star, "purple", 6.0));
-        scene.adShape(new StrokeShapeDecorator(ellipse, "orange", 3.0));
+        scene.addShape(star);
+        scene.addShape(ellipse);
         scene.save("out.html");
     }
 }
