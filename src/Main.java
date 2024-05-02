@@ -32,7 +32,7 @@ public class Main {
 //                        new Vec2(12.5, 47.5)
 //                }
 //        );
-        SvgScene scene = new SvgScene();
+//        SvgScene scene = new SvgScene();
 //        scene.adShape(star);
 //        scene.adShape(sixSides);
 //        scene.adShape(threeSides);
@@ -54,7 +54,7 @@ public class Main {
                         new Vec2(190, 78), new Vec2(10, 78),
                         new Vec2(160, 198)
                 });
-        star = new SolidFillShapeDecorator(star, "pink");
+//        star = new SolidFillShapeDecorator(star, "pink");
         star = new TransformationDecorator.Builder()
                 .translate(new Vec2(50, 50))
                 .rotate(-27, new Vec2(0, 0))
@@ -67,6 +67,15 @@ public class Main {
                 .rotate(60, new Vec2(100, 220))
                 .build(ellipse);
 
+//        ellipse = new DropShadowDecorator(ellipse);
+//        star = new DropShadowDecorator(star);
+        star = new GradientFillShapeDecorator.Builder()
+                .setShape(star).addStop(0, "blue")
+                .addStop(0.3, "black")
+                .addStop(1, "green")
+                .build();
+
+        SvgScene scene = SvgScene.getInstance();
         scene.adShape(new StrokeShapeDecorator(star, "purple", 6.0));
         scene.adShape(new StrokeShapeDecorator(ellipse, "orange", 3.0));
         scene.save("out.html");

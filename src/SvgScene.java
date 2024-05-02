@@ -10,6 +10,8 @@ public class SvgScene {
     private List<String> defs = new ArrayList<>();
     private static int index = 0;
 
+    private SvgScene() {};
+
     public static SvgScene getInstance() {
         if(instance == null) {
             instance = new SvgScene();
@@ -40,7 +42,7 @@ public class SvgScene {
             for(String def : defs) {
                 fileWriter.write(def + "\n");
             }
-            fileWriter.write("</defs");
+            fileWriter.write("</defs>");
             for (Shape shape : shapes) {
                 fileWriter.write("\t" + shape.toSvg("") + "\n");
             }
