@@ -57,7 +57,6 @@ public class Main {
         Shape ellipse = new Ellipse(new Vec2(100, 220), 60, 30);
 
         star = new SolidFillShapeDecorator(star, "pink");
-        star = new DropShadowDecorator(star);
 //        star = new GradientFillShapeDecorator.Builder()
 //                .setShape(star).addStop(0, "pink").addStop(0.5, "purple").addStop(1, "green").build();
         star = new TransformationDecorator.Builder()
@@ -65,12 +64,13 @@ public class Main {
                 .rotate(-27, new Vec2(0, 0))
                 .scale(new Vec2(0.85, 0.85))
                 .build(star);
+        star = new DropShadowDecorator(star);
 
         ellipse = new SolidFillShapeDecorator(ellipse, "yellow");
-        ellipse = new DropShadowDecorator(ellipse);
         ellipse = new TransformationDecorator.Builder()
                 .rotate(10, new Vec2(100, 220))
                 .build(ellipse);
+        ellipse = new DropShadowDecorator(ellipse);
 
         SvgScene scene = SvgScene.getInstance();
         scene.addShape(star);

@@ -4,10 +4,10 @@ import java.util.Locale;
 public class GradientFillShapeDecorator extends ShapeDecorator {
     private static int index = 1;
     private record Stop(double offset, String color) {}
-    private Stop stops[];
+    private Stop[] stops;
 
     public static class Builder {
-        private Stop stops[] = new Stop[0];
+        private Stop[] stops = new Stop[0];
         private Shape shape;
 
         public GradientFillShapeDecorator.Builder setShape(Shape shape) {
@@ -35,7 +35,7 @@ public class GradientFillShapeDecorator extends ShapeDecorator {
     private int addDefs() {
         SvgScene scene = SvgScene.getInstance();
         String result = "\t<linearGradient id=\"g%d\" >\n";
-        for(var stop : stops)
+        for(Stop stop : stops)
             result += String.format(Locale.ENGLISH, "\t\t<stop offset=\"%f\" style=\"stop-color:%s\" />\n", stop.offset, stop.color);
         result += "\t</linearGradient>";
         scene.addFilter(result);
